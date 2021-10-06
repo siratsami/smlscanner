@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo ""
+echo "Simple Social Media Link Scanner by B4GG3R "
+echo "Usage: smlscanner urls.txt"
+echo ""
+
+### This tools is checking only for facebook.com, instagram.com, twitter.com, pinterest.com, you can add more social medias by its domain address.
+
+for url in $(cat $1); do curl -s -k "$url" | grep -Eo '(http|https)://[^<"]+' | grep -e facebook.com -e instagram.com -e twitter.com -e pinterest.com | sort -u; echo "TARGET: "$url""; done
+echo ""
